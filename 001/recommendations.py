@@ -58,7 +58,33 @@ critics={
 	}
 }
 
+#> python3 -i
+
 #> from recommendations import critics
 #> critics['Lisa Rose']['Lady in the Water']
 #> critics['Toby']['Snakes on a Plane']=4.5
 #> critics['Toby']
+
+
+from math import sqrt
+
+def sim_distance(prefs,person1,person2):
+	si={}
+
+	for item in prefs[person1]:
+		if item in prefs[person2]:
+			si[item]=1
+
+	if len(si)==0: return 0
+
+	sum_of_squares=sum([ pow(prefs[person1][item]-prefs[person2][item], 2) for item in prefs[person1] if item in prefs[person2] ])
+
+	return 1/(1+sum_of_squares)
+
+#> from importlib import reload #???
+#> reload(recommendations)
+
+#> import recommendations
+#> reload(recommendations)
+
+#> recommendations.sim_distance(recommendations.critics, 'Lisa Rose','Gene Seymour')
