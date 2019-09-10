@@ -62,3 +62,18 @@ critics={
 #> critics['Lisa Rose']['Lady in the Water']
 #> critics['Toby']['Snakes on a Plane']=4.5
 #> critics['Toby']
+
+def similarity(data, username1, username2):
+
+	#res = sum([ pow(data[username1][k]-data[username2][k], 2) for k in data[username1] if k in data[username2] ])
+	res = sum([ pow(v-data[username2][k], 2) for (k, v) in data[username1].items() if k in data[username2] ])
+
+	return 1/(1+res)
+
+#> from importlib import reload
+#> reload(recommendations)
+
+#> import recommendations
+#> reload(recommendations)
+
+#> recommendations.similarity(recommendations.critics, 'Lisa Rose', 'Gene Seymour')
