@@ -73,7 +73,7 @@ critics={
 #> critics['Toby']['Snakes on a Plane']=4.5
 #> critics['Toby']
 
-def similarity(data, username1, username2):
+def similarity_euclidian(data, username1, username2):
 
 	matches = True if sum([ 1 for i in data[username1] if i in data[username2] ]) >0 else False
 	if not matches:
@@ -90,4 +90,4 @@ def similarity(data, username1, username2):
 #> import recommendations
 #> reload(recommendations)
 
-#> recommendations.similarity(recommendations.critics, 'Lisa Rose', 'Gene Seymour')
+#> recommendations.similarity_euclidian(recommendations.critics, 'Lisa Rose', 'Gene Seymour')
