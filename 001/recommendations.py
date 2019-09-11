@@ -55,7 +55,17 @@ critics={
 		'Snakes on a Plane':4.5
 		,'You, Me and Dupree':1.0
 		,'Superman Returns':4.0
-	}
+	},
+
+	'Some User 1':
+	{
+		'Movie 1':4.5
+	},
+
+	'Some User 2':
+	{
+		'Movie 2':4.5
+	},
 }
 
 #> from recommendations import critics
@@ -64,6 +74,10 @@ critics={
 #> critics['Toby']
 
 def similarity(data, username1, username2):
+
+	matches = True if sum([ 1 for i in data[username1] if i in data[username2] ]) >0 else False
+	if not matches:
+		return 0
 
 	#res = sum([ pow(data[username1][k]-data[username2][k], 2) for k in data[username1] if k in data[username2] ])
 	res = sum([ pow(v-data[username2][k], 2) for (k, v) in data[username1].items() if k in data[username2] ])
