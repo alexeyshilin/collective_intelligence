@@ -91,3 +91,8 @@ def similarity_euclidian(data, username1, username2):
 #> reload(recommendations)
 
 #> recommendations.similarity_euclidian(recommendations.critics, 'Lisa Rose', 'Gene Seymour')
+
+def sim_distance(prefs,person1,person2):
+	return similarity_euclidian(prefs,person1,person2)
+
+#> recommendations.sim_distance(recommendations.critics, 'Lisa Rose','Gene Seymour')
